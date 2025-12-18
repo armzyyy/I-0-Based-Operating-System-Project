@@ -1,0 +1,728 @@
+<!-- Author : Sheik Mehedi Hassan -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Huffman Compression Technique - How It Works</title>
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <meta name="title" content="Huffman Compression Technique">
+    <meta name="description" content="Learn how Huffman Coding works for lossless data compression. Complete guide with examples and Python implementation.">
+    <meta name="keywords" content="Huffman Compression, huffman-coding, lossless compression, data compression algorithm, compression technique">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Sheik Mehedi Hassan">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://samirpaulb.github.io/txt-compressor/info.html">
+    <meta property="og:title" content="Huffman Compression Technique">
+    <meta property="og:description" content="Learn how Huffman Coding works for lossless data compression.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/SamirPaulb/assets/main/huffman-algorithm_python-txt-compressor-webimage-samirpaul.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://samirpaulb.github.io/txt-compressor/info.html">
+    <meta property="twitter:title" content="Huffman Compression Technique">
+    <meta property="twitter:description" content="Learn how Huffman Coding works for lossless data compression.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/SamirPaulb/assets/main/huffman-algorithm_python-txt-compressor-webimage-samirpaul.jpg">
+    
+    <link rel="canonical" href="https://samirpaulb.github.io/txt-compressor/info.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Import Stylish Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Animated Background */
+        body {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            line-height: 1.8;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+            animation-duration: 12s;
+        }
+        
+        .bubble:nth-child(2) {
+            left: 20%;
+            width: 50px;
+            height: 50px;
+            animation-delay: 2s;
+            animation-duration: 10s;
+        }
+        
+        .bubble:nth-child(3) {
+            left: 30%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 4s;
+            animation-duration: 14s;
+        }
+        
+        .bubble:nth-child(4) {
+            left: 40%;
+            width: 70px;
+            height: 70px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+        
+        .bubble:nth-child(5) {
+            left: 50%;
+            width: 55px;
+            height: 55px;
+            animation-delay: 3s;
+            animation-duration: 13s;
+        }
+        
+        .bubble:nth-child(6) {
+            left: 60%;
+            width: 65px;
+            height: 65px;
+            animation-delay: 1s;
+            animation-duration: 12s;
+        }
+        
+        .bubble:nth-child(7) {
+            left: 70%;
+            width: 75px;
+            height: 75px;
+            animation-delay: 5s;
+            animation-duration: 15s;
+        }
+        
+        .bubble:nth-child(8) {
+            left: 80%;
+            width: 45px;
+            height: 45px;
+            animation-delay: 2s;
+            animation-duration: 11s;
+        }
+        
+        .bubble:nth-child(9) {
+            left: 90%;
+            width: 85px;
+            height: 85px;
+            animation-delay: 4s;
+            animation-duration: 13s;
+        }
+        
+        .bubble:nth-child(10) {
+            left: 15%;
+            width: 50px;
+            height: 50px;
+            animation-delay: 6s;
+            animation-duration: 14s;
+        }
+        
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 110vh;
+                transform: translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Ensure content is above background */
+        .info-container, .back-link, .hero-section, .content-section, footer {
+            position: relative;
+            z-index: 1;
+        }
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        
+        .back-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            color: white;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(245, 87, 108, 0.3);
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-section h1 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 2.8em;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        
+        .hero-section a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 3px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-section a:hover {
+            color: #fff;
+            border-bottom-color: #fff;
+        }
+        
+        .hero-section p {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .creator-name {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .creator-name p {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .creator-name h2 {
+            font-size: 2.5em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: shimmer 3s infinite;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+        
+        .content-section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+        }
+        
+        .content-section h2 {
+            color: #f5576c;
+            border-bottom: 4px solid #f5576c;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        
+        .content-section h3 {
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .content-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .content-section li {
+            margin-bottom: 20px;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.8;
+        }
+        
+        .content-section li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            top: 0;
+        }
+        
+        .content-section ol {
+            padding-left: 30px;
+            counter-reset: item;
+        }
+        
+        .content-section ol li {
+            padding-left: 10px;
+        }
+        
+        .content-section ol li::before {
+            content: counter(item) ".";
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-caption {
+            margin-top: 15px;
+            font-style: italic;
+            color: #555;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .code-section {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(142, 197, 252, 0.3);
+        }
+        
+        .code-section h3, .code-section h4 {
+            color: #4a148c;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 6px solid #667eea;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .highlight-box strong {
+            color: #4a148c;
+            font-size: 1.1em;
+        }
+        
+        .highlight-box ol {
+            margin-top: 15px;
+        }
+        
+        .references {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(252, 182, 159, 0.3);
+        }
+        
+        .references h2 {
+            color: #f5576c !important;
+        }
+        
+        .references ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .references li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .references li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .references li::before {
+            content: "🔗";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .references a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .references a:hover {
+            color: #f5576c;
+        }
+        
+        @media (max-width: 768px) {
+            .info-container {
+                padding: 10px;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .hero-section {
+                padding: 30px 20px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2em;
+                letter-spacing: -0.5px;
+            }
+            
+            .creator-name h2 {
+                font-size: 1.8em;
+            }
+            
+            .content-section h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CP4QE6ZEV0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CP4QE6ZEV0');
+    </script>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <div class="info-container">
+        <a href="index.html" class="back-link">← Go Back</a>
+
+        <header class="hero-section">
+            <h1><a href="index.html" style="color: #ffd700;">This Website</a> Uses Huffman Coding to Compress Data!</h1>
+            <p>Learn how this powerful lossless compression algorithm works</p>
+            <div class="creator-name">
+                <p>Created by</p>
+                <img src="images/my.jpg" alt="Sheik Mehedi Hassan" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid white; margin: 15px auto; display: block; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
+                <h2>Sheik Mehedi Hassan</h2>
+                <p style="font-size: 1.1em; margin-top: 10px;">North South University</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- Introduction -->
+            <section class="content-section">
+                <p><strong>Huffman Coding</strong> is a popular technique used for <strong>Lossless Data Compression</strong>.</p>
+            </section>
+
+            <!-- Lossless Compression -->
+            <section class="content-section">
+                <h2>Lossless Compression</h2>
+                <ul>
+                    <li><strong>Lossless compression</strong> is a class of data compression algorithms that allows the original data to be perfectly reconstructed from the compressed data. Lossless compression methods are <strong>reversible</strong>. Examples include <strong>GZIP</strong>, <strong>Brotli</strong>, <strong>WebP</strong>, and <strong>PNG</strong>.</li>
+                    <li>Lossless compression is preferred for text file compression, while lossy compression is generally preferred for audio, video, and image files.</li>
+                    <li>File formats like <strong>ZIP</strong> use lossless compression, while formats like <strong>MP3</strong> and <strong>JPEG</strong> use lossy compression.</li>
+                    <li><strong>Data compression ratio</strong>, also known as compression power, is a measurement of the relative reduction in size of data representation produced by a data compression algorithm. It is typically expressed as the division of uncompressed size by compressed size. Thus, a representation that compresses a file's storage size from 10 MB to 2 MB has a compression ratio of 10/2 = 5.</li>
+                </ul>
+                
+                <div class="image-container">
+                    <img src="images/info-images/lossless-lossy-data-compression.png" alt="Lossless vs Lossy data compression comparison" loading="lazy">
+                    <p class="image-caption">Lossless vs Lossy Compression</p>
+                </div>
+            </section>
+
+            <!-- Huffman Code -->
+            <section class="content-section">
+                <h2>Huffman Code</h2>
+                <ul>
+                    <li>A <strong>Huffman code</strong> is a particular type of optimal prefix code that is commonly used for lossless data compression. The process of finding or using such a code proceeds by means of Huffman coding, an algorithm developed by David A. Huffman.</li>
+                    <li>The output from Huffman's algorithm can be viewed as a <strong>variable-length code table</strong> for encoding a source symbol (such as a character in a file). The algorithm derives this table from the estimated probability or frequency of occurrence (weight) for each possible value of the source symbol.</li>
+                    <li><strong>Prefix Codes</strong> means the codes (bit sequences) are assigned in such a way that the code assigned to one character is not the prefix of code assigned to any other character. This is how Huffman Coding makes sure that there is <strong>no ambiguity</strong> when decoding the generated bitstream.</li>
+                </ul>
+
+                <div class="image-container">
+                    <img src="images/info-images/huffman-coding.png" alt="Huffman tree and binary code example" loading="lazy">
+                    <p class="image-caption">A Huffman coding tree built from character frequency table: A=0.6, B=0.2, C=0.07, D=0.06, E=0.05, F=0.02</p>
+                </div>
+
+                <div class="image-container">
+                    <img src="images/info-images/data-compression-with-huffmans-algorithm.png" alt="Data compression with Huffman's algorithm" loading="lazy">
+                </div>
+            </section>
+
+            <!-- Compression -->
+            <section class="content-section">
+                <h2>Compression Process</h2>
+                <div class="highlight-box">
+                    <strong>Huffman Encoding consists of 3 main steps:</strong>
+                    <ol>
+                        <li>Probability Calculation & Ordering the Symbols</li>
+                        <li>Binary Tree Transformation</li>
+                        <li>Assigning Codes to the Symbols</li>
+                    </ol>
+                </div>
+
+                <ul>
+                    <li>We count the number of each symbol in the whole data, then calculate the "probability" of each symbol by dividing that count by the total number of characters in the data. Since it's an algorithm using probability, more common symbols—the symbols having higher probability—are generally represented using fewer bits than less common symbols. This is one of the advantageous sides of Huffman Encoding.</li>
+                    <li>As an example, for data having 5 different symbols (A, B, C, D, E), we calculate probabilities as shown below:</li>
+                </ul>
+
+                <div class="image-container">
+                    <img src="images/info-images/compression1.png" alt="Symbol probability calculation" loading="lazy">
+                </div>
+
+                <p>Then we order the symbols according to their probabilities, representing each symbol as a node—this is our "collection".</p>
+
+                <div class="image-container">
+                    <img src="images/info-images/compression2.png" alt="Ordered symbols" loading="lazy">
+                </div>
+
+                <h3>Binary Tree Transformation:</h3>
+                <ol>
+                    <li>From the collection, we pick the two nodes with the smallest sum of probabilities and combine them into a new tree whose root has the probability equal to that sum.</li>
+                    <li>We add the new tree back into the collection.</li>
+                    <li>We repeat this process until one tree encompassing all the input probabilities has been constructed.</li>
+                </ol>
+
+                <div class="image-container">
+                    <img src="images/info-images/compression3.png" alt="Binary tree construction step 1" loading="lazy">
+                </div>
+
+                <div class="image-container">
+                    <img src="images/info-images/compression4.png" alt="Binary tree construction step 2" loading="lazy">
+                </div>
+
+                <div class="image-container">
+                    <img src="images/info-images/compression5.png" alt="Final Huffman tree" loading="lazy">
+                </div>
+
+                <div class="code-section">
+                    <h3>Implementation with Python:</h3>
+                    <div class="image-container">
+                        <img src="images/info-images/compression-code.png" alt="Python implementation code" loading="lazy">
+                    </div>
+                    
+                    <h4>Output:</h4>
+                    <div class="image-container">
+                        <img src="images/info-images/compression-code-output.png" alt="Python code output" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Conclusion:</strong> The compression ratio remains consistent with growing amounts of data, achieving close to a 2:1 ratio. Huffman Encoding effectively compresses data to approximately half its size. Although it's an older algorithm, it remains highly effective for data compression!</p>
+                </div>
+            </section>
+
+            <!-- Decompression -->
+            <section class="content-section">
+                <h2>De-compression Process</h2>
+                <ul>
+                    <li>Having our Binary Huffman Tree obtained during the encode phase, decoding is a very simple process to perform.</li>
+                    <li>Let's consider we have the same example: AAAAAAABCCCCCCDDEEEEE as our initial data and 000000000000001110101010101011101101010101010 as encoded output with the following Huffman Tree:</li>
+                </ul>
+
+                <div class="image-container">
+                    <img src="images/info-images/huffman-tree-for-decoding.png" alt="Huffman tree for decoding" loading="lazy">
+                </div>
+
+                <ul>
+                    <li>The decoding process is straightforward: starting from the head of the Huffman Tree and the beginning of the encoded data, each time we encounter 1 we go right, and when we encounter 0, we go left through the tree. When we reach a leaf node, we obtain the symbol! Then we start again from the head of the Huffman Tree while moving forward on the encoded data.</li>
+                    <li>With a few lines added to the encoding implementation, we can easily implement Huffman Decoding:</li>
+                </ul>
+
+                <div class="code-section">
+                    <div class="image-container">
+                        <img src="images/info-images/Huffman_Decoding-carbon-python-code.png" alt="Huffman decoding Python code" loading="lazy">
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="images/info-images/huffman_decoding-python-code-result.png" alt="Huffman decoding result" loading="lazy">
+                    </div>
+                </div>
+
+                <p>Data compression is a topic with many applications and various types of algorithms besides "frequency-based" Huffman Algorithm. You can check for "dictionary-based" methods like LZ77, LZ78, and LZW, which are especially useful for image compression.</p>
+            </section>
+
+            <!-- References -->
+            <section class="content-section references">
+                <h2>References</h2>
+                <ul>
+                    <li><a href="https://engineering.purdue.edu/ece264/17au/hw/HW13?alt=huffman" target="_blank" rel="noopener noreferrer">Purdue Engineering - Huffman Coding</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Lossless_compression" target="_blank" rel="noopener noreferrer">MDN - Lossless Compression</a></li>
+                    <li><a href="https://towardsdatascience.com/huffman-encoding-python-implementation-8448c3654328" target="_blank" rel="noopener noreferrer">Towards Data Science - Huffman Encoding Implementation</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Huffman_coding" target="_blank" rel="noopener noreferrer">Wikipedia - Huffman Coding</a></li>
+                    <li><a href="https://towardsdatascience.com/huffman-decoding-cca770065bab" target="_blank" rel="noopener noreferrer">Towards Data Science - Huffman Decoding</a></li>
+                    <li><a href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1176/assnFiles/assign6/huffman-encoding-supplement.pdf" target="_blank" rel="noopener noreferrer">Stanford - Huffman Encoding Supplement</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2026 File Compressor De-compressor | Created by <strong>Sheik Mehedi Hassan</strong></p>
+                <p class="footer-description">
+                    Lossless data compression using Huffman Coding algorithm
+                </p>
+                <p class="footer-description" style="font-weight: 600; color: #ecf0f1; font-size: 15px;">
+                    North South University
+                </p>
+                <div class="social-links">
+                    <a href="https://instagram.com/potatoxsplash" class="instagram-footer-link" target="_blank" rel="noopener noreferrer">
+                        Follow on Instagram
+                    </a>
+                    <a href="https://www.facebook.com/MehediXx.M3" class="facebook-footer-link" target="_blank" rel="noopener noreferrer">
+                        Connect on Facebook
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

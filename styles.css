@@ -1,0 +1,597 @@
+/* 
+	Author : Sheik Mehedi Hassan
+*/
+
+/* Import stylish Google Fonts */
+/* --- FULL PAGE BACKGROUND --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #cc0260, #d100b5); /* Stylish gradient */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Stays fixed on scroll */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+*{
+    color: #2c3e50;
+    font-family: 'Poppins', 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+h2{
+    color: #1a252f;
+    font-style: italic;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+h3{
+    color: #34495e;
+    font-style: italic;
+    text-decoration: underline;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Animations for dynamic feel */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+#heading {
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 130%;
+    color: #16a085;
+    animation: slideInRight 1s ease-out;
+}
+
+.align{
+    padding-left: 17%;
+    padding-right: 12%;
+    padding-bottom: 0.05%;
+    font-size: medium;
+}
+
+.bigdiv{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-out;
+}
+
+main.bigdiv section {
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.or-text {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.links{
+    color: #3498db;
+    background-color: #ecf0f1;
+    font-family: 'Poppins', Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.links:hover{
+    color: #ffffff;
+    background-color: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+/* Instagram Link Styles */
+.instagram-link {
+    color: #E1306C;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-size: medium;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 2px solid #E1306C;
+    border-radius: 8px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.instagram-link:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-text-fill-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(225, 48, 108, 0.4);
+}
+
+/* Facebook Link Styles */
+.facebook-link {
+    color: #1877F2;
+    background-color: #E7F3FF;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-size: medium;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 2px solid #1877F2;
+    border-radius: 8px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.facebook-link:hover {
+    background-color: #1877F2;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+}
+
+.facebook-link::before {
+    content: "👍 ";
+}
+
+/* Social Container Styles */
+.social-container {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+.instagram-container {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+.instagram-container p,
+.social-container p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.form{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    display: inline-block;
+}
+
+.input{
+    font-size: x-small;
+}
+
+#text1{
+    font-size: xx-small;
+}
+
+#text4{
+    font-size: small;
+    color: #2c3e50;
+}
+
+#encode:disabled{
+    background-color: #bdc3c7;
+}
+
+#decode:disabled{
+    background-color: #bdc3c7;
+}
+
+.button {
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+}
+
+.button:hover,
+.button:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #e74c3c;
+    transform: translateY(-2px);
+    box-shadow: rgba(0, 0, 0, 0.2) 2px 4px 8px;
+}
+
+.button:active {
+    opacity: .5;
+}
+
+.button:disabled{
+    color: #7f8c8d;
+}
+
+.text{
+    font-size: small;
+    color: #34495e;
+}
+
+.text2{
+    font-size: small;
+    color: #2c3e50;
+}
+
+#link1{
+    font-size: smaller;
+}
+
+#textImg{
+    width: 10%;
+    margin-left: 30%;
+    transition: transform 0.3s ease;
+}
+
+#textImg:hover {
+    transform: scale(1.1);
+}
+
+#doneImg{
+    width: 9.5%;
+    margin-left: 30.5%;
+    transition: transform 0.3s ease;
+}
+
+#doneImg:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+#optionsImg{
+    width: 14%;
+    margin-left: 28.5%;
+    transition: transform 0.3s ease;
+}
+
+#optionsImg:hover {
+    transform: scale(1.1);
+}
+
+#waitImg{
+    width: 14%;
+    margin-left: 29%;
+    animation: pulse 2s infinite;
+}
+
+@media(min-width:740px){
+    #heading {
+        margin-left: 12%;
+        margin-right: 10%;
+        font-size: 150%;
+    }
+    #encode{
+        margin-left: 4%;
+    }
+    .button{
+        font-size: medium;
+    }
+    .bigdiv{
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .align{
+        font-size: large;
+    }
+    .text{
+        font-size: medium;
+        margin-left: 12%;
+        margin-right: 3%;
+    }
+    #text1{
+        font-size: x-small;
+    }
+    .text2{
+        font-size: medium;
+    }
+    #text4{
+        font-size: medium;
+    }
+    .input{
+        font-size: small;
+    }
+    #link1{
+        font-size: large;
+    }
+}
+
+@media(min-width:1090px){
+    #heading {
+        margin-left: 17%;
+        margin-right: 11%;
+        font-size: 165%;
+    }
+    #encode{
+        margin-left: 4%;
+    }
+    .text{
+        margin-left: 25%;
+        margin-right: 15%;
+    }
+    #text1{
+        font-size: small;
+    }
+    .bigdiv{
+        margin-left: 19%;
+        margin-right: 15%;
+    }
+    .button{
+        font-size: large;
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+    }
+    .align{
+        padding-left:23% ;
+        padding-right: 20%;
+        font-size: x-large;
+    }
+    .text2{
+        font-size: large;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer p {
+    margin: 10px 0;
+    color: #ecf0f1;
+    font-size: 14px;
+}
+
+footer strong {
+    color: #ecf0f1;
+}
+
+.footer-description {
+    color: #bdc3c7;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.instagram-footer-link {
+    color: #E1306C;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 2px solid #E1306C;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+.instagram-footer-link:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-text-fill-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(225, 48, 108, 0.5);
+}
+
+.instagram-footer-link::before {
+    content: "📸 ";
+    -webkit-text-fill-color: #E1306C;
+}
+
+/* Facebook Footer Link */
+.facebook-footer-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 12px 24px;
+    background: #1877F2;
+    border: 2px solid #1877F2;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+.facebook-footer-link:hover {
+    background: #145DBF;
+    border-color: #145DBF;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
+}
+
+.facebook-footer-link::before {
+    content: "👍 ";
+}
+
+.file-input-button {
+    -webkit-appearance: none;
+    background: #16a085;
+    border: 1px solid #138d75;
+    border-radius: 10px;
+    outline: none;
+    padding: 0.1em 0.2em;
+    margin-right: 1px;
+    color: #ffffff;
+    font-size: 0.7em;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-input-button:hover {
+    background: #138d75;
+    transform: scale(1.05);
+}
+
+.reload-button {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: 'Poppins', 'Montserrat', monospace;
+    height: 30px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+
+.reload-button:focus {
+    box-shadow: #3498db 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.reload-button:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #2980b9 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.reload-button:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+.upload-button {
+    background: linear-gradient(to bottom right, #e74c3c, #8e44ad);
+    border: 0;
+    border-radius: 12px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+.upload-button:not([disabled]):focus {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(231, 76, 60, 0.5), .125rem .125rem 1rem rgba(142, 68, 173, 0.5);
+}
+
+.upload-button:not([disabled]):hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(231, 76, 60, 0.5), .125rem .125rem 1rem rgba(142, 68, 173, 0.5);
+    transform: scale(1.05);
+}
