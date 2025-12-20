@@ -17,7 +17,7 @@
 * An [Info page](https://armzyyy.github.io/I-0-Based-Operating-System-Project/info.html) is added to give more information about tecnique of **Lossless Data Compression** with Huffman coding.
 
 ## Demo Video
-![Demo Video](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/demo.mp4)
+**[▶️ Click here to watch the demo video](https://github.com/armzyyy/I-0-Based-Operating-System-Project/raw/main/images/readme-images/demo.mp4)**
 
 ## Screenshots
 
