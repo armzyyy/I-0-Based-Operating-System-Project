@@ -25,7 +25,7 @@
 
 
 ## Video
-https://user-images.githubusercontent.com/77569653/172716965-50560f4a-2acf-4013-ae87-8b474b2a09e3.mp4
+[https://user-images.githubusercontent.com/77569653/172716965-50560f4a-2acf-4013-ae87-8b474b2a09e3.mp4](https://github.com/armzyyy/I-0-Based-Operating-System-Project/blob/main/images/readme-images/demo.mp4)
 
 
 
