@@ -3,66 +3,50 @@
 <h1> Text File Compressor De-compressor Web App</h1>
 </div>
 
-
 - This webapp uses Huffman Coding for Text Compression and De-compression.
 - Made with JavaScript, HTML5 and CSS3.
 - Live Demo:👇
-
-- [x] [https://github.com/armzyyy/I-0-Based-Operating-System-Project/blob/main/README.md](https://github.com/armzyyy/I-0-Based-Operating-System-Project/)
-
-
+- [x] [https://armzyyy.github.io/I-0-Based-Operating-System-Project/](https://armzyyy.github.io/I-0-Based-Operating-System-Project/)
 
 ## About this application:
-
 * This website performs Lossless data compression and decompression of text(.txt) files using Huffman Algorithm.
 * In this algorithm, a variable-length code is assigned to input different characters. The code length is related to how frequently characters are used. Most frequent characters have the smallest codes and longer codes for least frequent characters.
 * A Huffman code is a tree, built bottom up, starting with the list of different characters appearing in a text and their frequency. 
 * Compression ratio usually improves as the file size increases.
 * The website is made responsive (with HTML and CSS ) and interactive (with JavaScript ) .
-* An [Info page](https://github.com/armzyyy/I-0-Based-Operating-System-Project/blob/main/info.html) is added to give more information about tecnique of **Lossless Data Compression** with Huffman coding.
+* An [Info page](https://armzyyy.github.io/I-0-Based-Operating-System-Project/info.html) is added to give more information about tecnique of **Lossless Data Compression** with Huffman coding.
 
+## Demo Video
+![Demo Video](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/demo.mp4)
 
+## Screenshots
 
+### Landing Page:
+![screenshot](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/landing-page.png)
 
-## Video
-[https://user-images.githubusercontent.com/77569653/172716965-50560f4a-2acf-4013-ae87-8b474b2a09e3.mp4](https://github.com/armzyyy/I-0-Based-Operating-System-Project/blob/main/images/readme-images/demo.mp4)
+### Upload File
+![step1](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/step1.png)
 
+### Select Action (Compress / De-compress)
+![step2](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/step2.png)
 
+### Wait for File Download
+File gets downloaded automatically when selected process is complete.
 
-- [x] Landing Page:
+**Compression - Compression Ratio is also displayed:**
+![compression](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/step3.png)
 
-<a href="#"> ![screenshot](images/readme-images/landing-page.png) </a>
+**De-compression:**
+![decompression](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/decompression.png)
 
-- [x] Upload File
+### Additional Instructions and Warnings
+Additional Instructions and Warnings are provided if the above steps are not followed correctly:
 
-<a href="#"> ![step1](images/readme-images/step1.png) </a>
+![noFile](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/nofile.png)
 
+![smallFile](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/verysmallfile.png)
 
-- [x] Select Action (Compress / De-compress)
+### About Huffman Coding
+Information about the technique of Lossless Data Compression with Huffman coding:
 
-<a href="#"> ![step2](images/readme-images/step2.png) </a>
-
-
-- [x] Wait for File Download
-    * File gets downloaded automatically when selected process is complete.
-
-    * Compression - Compression Ratio is also displayed 
-
-    <a href="#"> ![compression](images/readme-images/step3.png) </a>
-    
-    * De-compression
-
-    <a href="#"> ![decompression](images/readme-images/decompression.png) </a>
-
-* Additional Instructions and Warnings are provided if the above steps are not followed correctly
-
-<a href="#"> ![noFile](images/readme-images/nofile.png) </a>
-
-<a href="#"> ![smallFile](images/readme-images/verysmallfile.png)  </a>
-
-
-
-* About the tecnique of Lossless Data Compression with Huffman coding.
-
-<a href="#"> ![info1](images/readme-images/info.jpeg) </a>
-
+![info1](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/info.jpeg)
