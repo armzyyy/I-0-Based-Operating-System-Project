@@ -44,7 +44,7 @@ Additional Instructions and Warnings are provided if the above steps are not fol
 
 ![noFile](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/nofile.png)
 
-![smallFile](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/verysmallfile.png)
+![smallFile](https://raw.githubusercontent.com/armzyyy/I-0-Based-Operating-System-Project/main/images/readme-images/verysmallsize.png)
 
 ### About Huffman Coding
 Information about the technique of Lossless Data Compression with Huffman coding:
